@@ -12,6 +12,9 @@ Items that we MIGHT need:
 
 - [] Breadboard
 - [] Pump for acids and bases
+- [] Resistors
+- [] On/off switch
+- [] RTC chip (if using Arduino)
 
 Items that we WILL need:
 
