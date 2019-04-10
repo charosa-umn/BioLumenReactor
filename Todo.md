@@ -2,7 +2,7 @@
 
 Things that need to be decided:
 
-- [] What we will use for the controller
+- [x] What we will use for the controller
 - [] What language(s) we will be using
 - [] UML diagram
 - [] What sensors we will need
@@ -14,10 +14,9 @@ Items that we MIGHT need:
 - [] Pump for acids and bases
 - [] Resistors
 - [] On/off switch
-- [] RTC chip (if using Arduino)
 
 Items that we WILL need:
-
+- [] RaspberryPi
 - [] Wires
 - [] Thermometer sensor
 - [] ph sensor
