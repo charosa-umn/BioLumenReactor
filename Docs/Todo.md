@@ -25,3 +25,5 @@ Items that we WILL need:
 Items that we MIGHT need:
 - [ ] 7-segment display
 - [ ] LED indicator 
+- [ ] Case for Raspberrypi
+- [ ] Heatsink
