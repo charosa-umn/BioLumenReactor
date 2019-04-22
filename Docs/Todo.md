@@ -12,6 +12,7 @@ Things that need to be decided/done:
 - [ ] Writting to csv
 - [ ] Prep routine
 - [ ] Run on startup
+- [ ] Begin after button press
 - [ ] Documentation requirements
 
 Items that we WILL need:
