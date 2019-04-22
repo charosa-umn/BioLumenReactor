@@ -1,22 +1,27 @@
 ### TODO List for BioLumen
 
-Things that need to be decided:
+Things that need to be decided/done:
 
 - [x] What we will use for the controller
-- [ ] What language(s) we will be using
-- [ ] UML diagram
-- [ ] What sensors we will need
-- [ ] Any other supplies that we need
-
-Items that we MIGHT need:
-
-- [ ] Breadboard
-- [ ] Pump for acids and bases
-- [ ] Resistors
-- [ ] On/off switch
+- [x] What language we will be using
+- [x] Board schimatic
+- [x] What sensors we will need
+- [x] Set up temp reading
+- [ ] Calibrating pH sensor
+- [ ] Convert volatage from pH to pH
+- [ ] Writting to csv
+- [ ] Documentation requirements
 
 Items that we WILL need:
-- [ ] RaspberryPi
+- [x] RaspberryPi
+- [x] Resistors
 - [ ] Wires
-- [ ] Thermometer sensor
-- [ ] ph sensor
+- [x] Thermometer sensor
+- [x] ph sensor
+- [ ] Breadboard
+- [ ] Pump for acids and bases
+- [ ] On/off switch
+
+Items that we MIGHT need:
+- [ ] 7-segment display
+- [ ] LED indicator 
