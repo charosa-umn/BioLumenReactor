@@ -10,6 +10,8 @@ Things that need to be decided/done:
 - [ ] Calibrating pH sensor
 - [ ] Convert volatage from pH to pH
 - [ ] Writting to csv
+- [ ] Prep routine
+- [ ] Run on startup
 - [ ] Documentation requirements
 
 Items that we WILL need:
