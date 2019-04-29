@@ -2,24 +2,17 @@ import os
 import glob
 import time
 import csv
-from numpy import interp
-# Import SPI library (for hardware SPI) and MCP3008 library.
 import Adafruit_GPIO.SPI as SPI
 import Adafruit_MCP3008
 
-# Software SPI configuration:
-CLK  = 18
-MISO = 23
-MOSI = 24
-CS   = 25
-mcp = Adafruit_MCP3008.MCP3008(clk=CLK, cs=CS, miso=MISO, mosi=MOSI)
-
+#pH configuration
+mcp = Adafruit_MCP3008.MCP3008(18, 25, 23, 24)
 
 ##Run the system commands to init the interface
 os.system('modprobe w1-gpio')
 os.system('modprobe w1-therm')
 
-##These are the paths to the sensors
+##These are the paths to the temp sensor
 base_dir = '/sys/bus/w1/devices/'
 device_folder = glob.glob(base_dir + '28*')[0]
 device_file = device_folder + '/w1_slave'
@@ -58,9 +51,8 @@ def main():
             ##Gather temp
             cur_temp = read_temp()
             ##Gather ph
-            cur_pH = mcp.read_adc(0) *0.0048828125 #Convert to voltage
-            cur_pH = cur_pH * 2.8 #Convert to pH
-
+            cur_pH = mcp.read_adc(0) * 0.013671875
+            
             ##Print realtime stats
             print("Time:", cur_time.tm_hour, " ", cur_time.tm_min, " ", cur_time.tm_sec, " ", cur_temp, " ", cur_pH)
 
@@ -69,5 +61,5 @@ def main():
             i+=1
             time.sleep(1)
 
-
-main()
+if __name__ == "__main__":
+    main()
