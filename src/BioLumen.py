@@ -2,6 +2,7 @@ import os
 import glob
 import time
 import csv
+from numpy import interp
 # Import SPI library (for hardware SPI) and MCP3008 library.
 import Adafruit_GPIO.SPI as SPI
 import Adafruit_MCP3008
@@ -57,7 +58,8 @@ def main():
             ##Gather temp
             cur_temp = read_temp()
             ##Gather ph
-            cur_pH = mcp.read_adc(0)
+            cur_pH = mcp.read_adc(0) *0.0048828125 #Convert to voltage
+            cur_pH = cur_pH * 2.8 #Convert to pH
 
             ##Print realtime stats
             print("Time:", cur_time.tm_hour, " ", cur_time.tm_min, " ", cur_time.tm_sec, " ", cur_temp, " ", cur_pH)
