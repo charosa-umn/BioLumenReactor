@@ -50,16 +50,18 @@ def main():
             total_seconds = time.time()-start_time
             ##Gather temp
             cur_temp = read_temp()
-            ##Gather ph
-            cur_pH = mcp.read_adc(0) * 0.013671875
+            ##Gather ph average over a set time 
+            for j in range(5):
+                total+=mcp.read_adc(0)-300
+                time.sleep(0.2)
+            cur_pH = (-(((total_pH/5) * 0.013671875) - 7)+7)
             
             ##Print realtime stats
             print("Time:", cur_time.tm_hour, " ", cur_time.tm_min, " ", cur_time.tm_sec, " ", cur_temp, " ", cur_pH)
 
             ##Write the data to the csv
             data_writer.writerow([cur_time.tm_hour, cur_time.tm_min, cur_time.tm_sec, total_seconds, cur_temp, cur_pH])
-            i+=1
-            time.sleep(1)
+
 
 if __name__ == "__main__":
     main()
