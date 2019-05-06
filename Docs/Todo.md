@@ -7,9 +7,9 @@ Things that need to be decided/done:
 - [x] Board schimatic
 - [x] What sensors we will need
 - [x] Set up temp reading
+- [x] Convert volatage from digital to pH
+- [x] Writting to csv
 - [ ] Calibrating pH sensor
-- [ ] Convert volatage from pH to pH
-- [ ] Writting to csv
 - [ ] Prep routine
 - [ ] Run on startup
 - [ ] Begin after button press
