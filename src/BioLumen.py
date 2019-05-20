@@ -4,7 +4,18 @@ import time
 import csv
 import Adafruit_GPIO.SPI as SPI
 import Adafruit_MCP3008
-
+import RPi.GPIO as io
+h1 = 16
+h2 = 20
+oh1 = 19
+oh2 = 26
+load = 21
+io.setup(h1, io.OUT)
+io.setup(h2, io.OUT)
+io.setup(oh1, io.OUT)
+io.setup(oh2, io.OUT)
+io.setup(load, io.OUT)
+io.cleanup()
 #pH configuration
 mcp = Adafruit_MCP3008.MCP3008(18, 25, 23, 24)
 
@@ -16,6 +27,31 @@ os.system('modprobe w1-therm')
 base_dir = '/sys/bus/w1/devices/'
 device_folder = glob.glob(base_dir + '28*')[0]
 device_file = device_folder + '/w1_slave'
+
+def pumpAcid(time):
+    io.output(h1, True)
+    io.output(h2, False)
+    io.output(oh1, False)
+    io.output(oh2, False)
+    io.output(load, True)
+    time.sleep(time)
+    turnOff()
+
+def pumpBase(time):
+    io.output(oh1, True)
+    io.output(oh2, False)
+    io.output(h1, False)
+    io.output(h2, False)
+    io.output(load, True)
+    time.sleep(time)
+    turnOff()
+
+def turnOff():
+    io.output(oh1, False)
+    io.output(oh2, False)
+    io.output(oh1, False)
+    io.output(oh2, False)
+    io.output(load, False)
 
 ##Get the raw data provided by the sensor in the terminal
 def read_temp_raw():
@@ -55,7 +91,13 @@ def main():
                 total+=mcp.read_adc(0)-300
                 time.sleep(0.2)
             cur_pH = (-(((total_pH/5) * 0.013671875) - 7)+7)
-            
+            if cur_pH > 8.0:
+                pumpBase()
+            elif cur_pH < 6.0:
+                pumpAcid()
+            elif cur_pH <= 7.5 and cur_pH >= 6.5:
+                turnOff()
+                
             ##Print realtime stats
             print("Time:", cur_time.tm_hour, " ", cur_time.tm_min, " ", cur_time.tm_sec, " ", cur_temp, " ", cur_pH)
 
