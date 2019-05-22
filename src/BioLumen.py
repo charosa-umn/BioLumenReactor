@@ -1,80 +1,9 @@
-import os
-import glob
 import time
 import csv
-import Adafruit_GPIO.SPI as SPI
-import Adafruit_MCP3008
-import RPi.GPIO as io
-h1 = 16
-h2 = 20
-oh1 = 19
-oh2 = 26
-acidload = 21
-baseload = 13
-io.setup(h1, io.OUT)
-io.setup(h2, io.OUT)
-io.setup(oh1, io.OUT)
-io.setup(oh2, io.OUT)
-io.setup(acidload, io.OUT)
-io.setup(baseload, io.OUT)
-io.cleanup()
-turnOff()
+from pumps import *
+from temp import *
 #pH configuration
 mcp = Adafruit_MCP3008.MCP3008(18, 25, 23, 24)
-
-##Run the system commands to init the interface
-os.system('modprobe w1-gpio')
-os.system('modprobe w1-therm')
-
-##These are the paths to the temp sensor
-base_dir = '/sys/bus/w1/devices/'
-device_folder = glob.glob(base_dir + '28*')[0]
-device_file = device_folder + '/w1_slave'
-
-def pumpAcid(time):
-    io.output(h1, True)
-    io.output(h2, False)
-    io.output(oh1, False)
-    io.output(oh2, False)
-    io.output(acidload, True)
-    time.sleep(time)
-    turnOff()
-
-def pumpBase(time):
-    io.output(oh1, True)
-    io.output(oh2, False)
-    io.output(h1, False)
-    io.output(h2, False)
-    io.output(baseload, True)
-    time.sleep(time)
-    turnOff()
-
-def turnOff():
-    io.output(oh1, False)
-    io.output(oh2, False)
-    io.output(oh1, False)
-    io.output(oh2, False)
-    io.output(acidload, False)
-    io.output(baseload, False)
-
-##Get the raw data provided by the sensor in the terminal
-def read_temp_raw():
-    f = open(device_file, 'r')
-    lines = f.readlines()
-    f.close()
-    return lines
- 
-def read_temp():
-    lines = read_temp_raw()
-    while lines[0].strip()[-3:] != 'YES':
-        time.sleep(0.2)
-        lines = read_temp_raw()
-    equals_pos = lines[1].find('t=')
-    if equals_pos != -1:
-        temp_string = lines[1][equals_pos+2:]
-        ##Convert to C
-        temp_c = float(temp_string) / 1000.0
-        return temp_c
 
 
 def main():
@@ -110,4 +39,5 @@ def main():
 
 
 if __name__ == "__main__":
+    initiatePumps()
     main()
