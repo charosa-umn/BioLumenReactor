@@ -1,4 +1,4 @@
-import RPi.GPIO as io
+##import RPi.GPIO as io
 ##To turn a pump on, one of
 ##the pins of the pump (H or OH)
 ##must be high and the other

@@ -1,10 +1,16 @@
 import time
 import csv
+import RPi.GPIO as io
 from pumps import *
 from temp import *
 #pH configuration
 mcp = Adafruit_MCP3008.MCP3008(18, 25, 23, 24)
 
+def start_up():
+    io.setwarnings(False)
+    GPIO.setup(22, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+    GPIO.setup(10,GPIO.OUT)
+    initiatePumps()
 
 def main():
     start_time = time.time()  ##Time the program started
@@ -39,5 +45,13 @@ def main():
 
 
 if __name__ == "__main__":
-    initiatePumps()
-    main()
+    try:
+        start_up()
+        print("Ready")#light up led
+        io.output(10, True)
+        io.wait_for_edge(22, GPIO.RISING)
+        io.output(10, False)
+        main()
+    except KeyboardInterrupt:  
+        io.cleanup()       # clean up GPIO on CTRL+C exit  
+    io.cleanup()           # clean up GPIO on normal exit  
