@@ -1,7 +1,7 @@
 import os
 import glob
-import Adafruit_GPIO.SPI as SPI  #May be unused
-import Adafruit_MCP3008
+#import Adafruit_GPIO.SPI as SPI  #May be unused
+#import Adafruit_MCP3008
 
 ##Run the system commands to init the interface
 os.system('modprobe w1-gpio')

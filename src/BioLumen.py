@@ -4,12 +4,13 @@ import RPi.GPIO as io
 from pumps import *
 from temp import *
 #pH configuration
+import Adafruit_MCP3008
 mcp = Adafruit_MCP3008.MCP3008(18, 25, 23, 24)
 
 def start_up():
     io.setwarnings(False)
-    GPIO.setup(22, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-    GPIO.setup(10,GPIO.OUT)
+    io.setup(22, io.IN, pull_up_down=io.PUD_DOWN)
+    io.setup(10,io.OUT)
     initiatePumps()
 
 def main():
@@ -25,11 +26,12 @@ def main():
             total_seconds = time.time()-start_time
             ##Gather temp
             cur_temp = read_temp()
-            ##Gather ph average over a set time 
+            ##Gather ph average over a set time
+	    total = 0 
             for j in range(5):
                 total+=mcp.read_adc(0)-300
                 time.sleep(0.2)
-            cur_pH = (-(((total_pH/5) * 0.013671875) - 7)+7)
+            cur_pH = (-(((total/5) * 0.013671875) - 7)+7)
             if cur_pH > 8.0:
                 pumpBase(0.5)
             elif cur_pH < 6.0:
@@ -49,7 +51,7 @@ if __name__ == "__main__":
         start_up()
         print("Ready")#light up led
         io.output(10, True)
-        io.wait_for_edge(22, GPIO.RISING)
+        io.wait_for_edge(22, io.RISING)
         io.output(10, False)
         main()
     except KeyboardInterrupt:  
