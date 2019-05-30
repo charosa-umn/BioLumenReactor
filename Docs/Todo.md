@@ -12,7 +12,7 @@ Things that need to be decided/done:
 - [ ] Calibrating pH sensor
 - [ ] Prep routine
 - [ ] Run on startup
-- [ ] Begin after button press
+- [ ] Begin after button press?
 - [ ] Documentation requirements
 
 Items that we WILL need:
@@ -21,8 +21,8 @@ Items that we WILL need:
 - [ ] Wires
 - [x] Thermometer sensor
 - [x] ph sensor
-- [ ] Breadboard
-- [ ] Pump for acids and bases
+- [x] Breadboard
+- [x] Pump for acids and bases
 - [ ] On/off switch
 
 Items that we MIGHT need:
