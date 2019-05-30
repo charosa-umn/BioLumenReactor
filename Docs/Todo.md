@@ -9,10 +9,13 @@ Things that need to be decided/done:
 - [x] Set up temp reading
 - [x] Convert volatage from digital to pH
 - [x] Writting to csv
-- [ ] Calibrating pH sensor
+- [x] Begin after button press
 - [ ] Prep routine
 - [ ] Run on startup
-- [ ] Begin after button press?
+- [ ] Get data file to mounted flashdrive
+- [ ] Calibrating pH sensor
+- [ ] Power down when off switch is activated
+- [ ] Begin prep when on switch is activated
 - [ ] Documentation requirements
 
 Items that we WILL need:
@@ -23,6 +26,7 @@ Items that we WILL need:
 - [x] ph sensor
 - [x] Breadboard
 - [x] Pump for acids and bases
+- [ ] PCB board
 - [ ] On/off switch
 
 Items that we MIGHT need:
