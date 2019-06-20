@@ -64,9 +64,12 @@ def main():
                     pumpAcid(0.5)
                 elif cur_pH <= 7.5 and cur_pH >= 6.5:
                     turnOff()
-                
+            
+	    hourspassed = 4-((now.seconds//3600)-4)
+	    minspassed = 30-(((now.seconds//60)%60)-30)
+	    secondspassed = 30-(((now.seconds)%60)-30)
             ##Print realtime stats per min
-            print("Time:", now.seconds//3600, " ", (now.seconds//60)%60, " ", (now.seconds)%60, " ", cur_temp, " ", cur_pH)
+            print("Time: ", hourspassed, ":", minspassed,":", secondspassed, " Current temp: ", cur_temp, " current pH: ", cur_pH)
 
             ##Post to website
             now = end_time-datetime.datetime.now()
@@ -78,7 +81,7 @@ def main():
         
             
             ##Write the data to the csv
-            data_writer.writerow([now.seconds//3600, (now.seconds//60)%60, now.seconds%60, now.seconds, cur_temp, cur_pH])
+            data_writer.writerow([hourspassed, minspassed, secondspassed, now.seconds, cur_temp, cur_pH])
     close(data_file)
     print("Process Finished")
     firebase.put('','/running',0)
