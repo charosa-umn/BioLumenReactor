@@ -20,7 +20,7 @@ def start_up():
     io.output(10, False)
     initiatePumps()
     ready = False
-    while !ready and read_temp() > 26.0 and read_temp() < 29.0:
+    while not ready and read_temp() > 26.0 and read_temp() < 29.0:
         for j in range(5):
              total+=mcp.read_adc(0)-300 ##-300 to adjust
              time.sleep(1)
