@@ -9,8 +9,10 @@ Things that need to be decided/done:
 - [x] Set up temp reading
 - [x] Convert volatage from digital to pH
 - [x] Writting to csv
+- [x] Write to realtime webpage
+- [ ] Display realtime graph
 - [x] Begin after button press
-- [ ] Prep routine
+- [x] Prep routine
 - [ ] Run on startup
 - [ ] Get data file to mounted flashdrive
 - [ ] Calibrating pH sensor
@@ -21,16 +23,11 @@ Things that need to be decided/done:
 Items that we WILL need:
 - [x] RaspberryPi
 - [x] Resistors
-- [ ] Wires
 - [x] Thermometer sensor
 - [x] ph sensor
 - [x] Breadboard
 - [x] Pump for acids and bases
+- [ ] Wires
 - [ ] PCB board
 - [ ] On/off switch
-
-Items that we MIGHT need:
-- [ ] 7-segment display
-- [ ] LED indicator 
-- [ ] Case for Raspberrypi
-- [ ] Heatsink
+- [ ] Push button
