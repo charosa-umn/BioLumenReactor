@@ -10,7 +10,7 @@ Things that need to be decided/done:
 - [x] Convert volatage from digital to pH
 - [x] Writting to csv
 - [x] Write to realtime webpage
-- [ ] Display realtime graph
+- [x] Display realtime graph
 - [x] Begin after button press
 - [x] Prep routine
 - [ ] Run on startup
