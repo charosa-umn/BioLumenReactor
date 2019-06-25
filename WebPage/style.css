@@ -1,0 +1,15 @@
+#running {
+	text-align: center;
+	color: red;
+}
+
+h1 {
+	margin-left: 20px;
+}
+
+#data_values {
+	margin-left: 40px;
+	margin-bottom: 10px;
+}
+
+.ignore-css{all:unset;}
