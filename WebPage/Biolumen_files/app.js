@@ -135,4 +135,40 @@ function updateGraph(data,indicator){
 		runningObject.innerText = snap.val()
 	);
 
+	if (runningObject.innerText =="Not Running"){
+		reset()
+	}
+
 }());
+
+
+// Loading bar
+(function ($) {
+  var
+    $cont = $('#prog'),
+    $bar  = $cont.find('.progress'),
+    value = 0,
+    time  = 288;
+    
+  function reset() {
+    value = 0;
+    $cont.removeClass('done');
+    $bar.css('height', '0%').text('0');
+    $bar.css('backgroundColor', '#114BAF').text('0');
+    setTimeout(increment, 500);
+  }
+  
+  function set(num) {
+   
+    $bar.css('height', num + '%').text(num);
+    
+    if (value === 100) {
+	  $bar.css('backgroundColor', '#11AF19');
+      $cont.addClass('done');
+      return;
+    }
+  }
+  $bar.css('backgroundColor', '#114BAF').text('0');
+  reset();
+  
+}(this.jQuery));

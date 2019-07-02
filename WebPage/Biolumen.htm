@@ -4,6 +4,7 @@
 	<script src="Biolumen_files/firebase.js"></script>
 	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
 	<title>Biolumen</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
@@ -185,7 +186,12 @@ img.emoji {
 			
 	<div class="ignore-css" style="font-family: FontAwesome">
 	<h1 id="running"></h1>
-	<h1>Time Left:</h1>
+	
+		
+
+	<div class="ignore-css row">
+	  <div class="column">
+		<h1>Time Left:</h1>
 		<div id="data_values">
 			<span id="hours">7</span>
 			<span> : </span>
@@ -202,6 +208,14 @@ img.emoji {
 			<span>pH: </span>
 			<span id="ph">7.2</span>
 		</div>
+	  </div>
+	  <div class="column">
+		<div class="progress-container" id="prog">
+		  <div class="progress" style="height: 0%">0</div>
+		  <div class="progress-overlay"></div>
+		</div>
+	  </div>
+	</div>
 		
 			
     <div class="wrapper">
